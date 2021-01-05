@@ -14,7 +14,7 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "nodemon index.js",
-    "prd": "NODE_ENV=production node start.js"
+    "prd": "NODE_ENV=production nodemon index.js"
   },
   "author": "Zi",
   "license": "ISC"
