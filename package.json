@@ -13,8 +13,8 @@
   "devDependencies": {},
   "scripts": {
     "start": "npm run dev",
-    "dev": "nodemon index.js",
-    "prd": "NODE_ENV=production nodemon index.js"
+    "dev": "node index.js",
+    "prd": "NODE_ENV=production node index.js"
   },
   "author": "Zi",
   "license": "ISC"
