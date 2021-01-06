@@ -51,6 +51,7 @@ ck.hears("/cekal", (ctx) => {
 
 // handle photo input
 ck.on("photo", downloadPhotoMiddleware, (ctx, next) => {
+  ctx.reply('Gambar sedang diproses...');
   //console.log(ctx.update.message.photo.length);
   const panjang = ctx.update.message.photo.length;
   const link = ctx.update.message.photo[panjang-1].file_id;
@@ -79,12 +80,13 @@ ck.on("photo", downloadPhotoMiddleware, (ctx, next) => {
 
         //ctx.reply(hasil);
         //run({ name: /^hasil$/i });
-        const makanan = run({ name: new RegExp('^'+hasil+'$','i') });
+        //const makanan = run({ name: new RegExp('^'+hasil+'$','i') });
+        const makanan = run({ name: {'$regex' : hasil, '$options' : 'i'} });
         makanan.then(dataMakanan => {
            ctx.reply(`Nama makanan adalah ${dataMakanan[0].nama} memiliki ${dataMakanan[0].kalori} kalori tiap ${dataMakanan[0].satuan} gram`);
         }).catch(error => ctx.reply('Maaf data makanan belum ada'));
        
-        //console.log(JSON.stringify(classifiedImages, null, 2));
+        console.log(JSON.stringify(classifiedImages, null, 2));
       })
       .catch((err) => {
         console.log("error:", err);
